@@ -1,7 +1,0 @@
-*.log
-node_modules
-/build
-/dist
-.DS_Store
-*.scss.d.ts
-/src/styles/polaris-tokens
