@@ -1,18 +1,23 @@
 import React from 'react';
-import { Layout, Page, FooterHelp, Link } from '@shopify/polaris';
+import { 
+  Layout,
+  Page,
+  FooterHelp,
+  Link
+} from '@shopify/polaris';
 
-export function App() {
-  return (
-    <Page title="Polaris">
-      <Layout>
-        <Layout.Section>
-          <FooterHelp>
-            For more details on Polaris, visit our{' '}
-            <Link url="https://polaris.shopify.com">style guide</Link>.
-          </FooterHelp>
-        </Layout.Section>
-      </Layout>
-    </Page>
-  );
+import Form from './components/Form'
+
+function App() {
+    return (
+      <Page title="Polaris">
+        <Layout>
+          <Layout.Section>
+            <Form />
+          </Layout.Section>
+        </Layout>
+      </Page>
+    );
 }
 
+export default App
