@@ -1,9 +1,7 @@
 import React from 'react';
 import { 
   Layout,
-  Page,
-  FooterHelp,
-  Link
+  Page
 } from '@shopify/polaris';
 
 import Form from './components/Form'
