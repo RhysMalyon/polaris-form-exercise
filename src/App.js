@@ -5,14 +5,13 @@ import {
 } from '@shopify/polaris';
 
 import Form from './components/Form'
-import NewForm from './components/NewForm';
 
 function App() {
     return (
       <Page title="Polaris">
         <Layout>
           <Layout.Section>
-            <NewForm />
+            <Form />
           </Layout.Section>
         </Layout>
       </Page>
