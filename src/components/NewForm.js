@@ -10,21 +10,14 @@ import lunarisData from '../data/lunarisData';
 
 import NameInput from './NameInput';
 import AddressInput from './AddressInput';
+import GenderSelect from './GenderSelect';
 
 function NewForm() {
   const userData = useState(lunarisData[0])
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const [gender, setGender] = useState(userData[0].gender);
-  const handleGenderChange = useCallback((newValue) => setGender(userData[0].gender = newValue), []);
-
-  const genderOptions = [
-    {label: 'Male', value: 'male'},
-    {label: 'Female', value: 'female'},
-    {label: 'Unknown', value: 'unknown'},
-    {label: 'Prefer Not To Say', value: 'preferNotToSay'},
-  ]
+  
 
   const [birthday, setBirthday] = useState(userData[0].birthday);
   const handleBirthdayChange = useCallback((newValue) => setBirthday(userData[0].birthday = newValue), []);
@@ -46,13 +39,9 @@ function NewForm() {
         userData={userData} 
         isEditing={isEditing}
       />
-      <Select 
-        label="Gender"
-        options={genderOptions}
-        value={gender}
-        onChange={handleGenderChange}
-        disabled={!isEditing}
-        requiredIndicator={true}
+      <GenderSelect 
+        userData={userData} 
+        isEditing={isEditing}
       />
       <TextField
         label="Birthday"
