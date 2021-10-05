@@ -34,6 +34,11 @@ function NewForm() {
     {label: 'Prefer Not To Say', value: 'preferNotToSay'},
   ]
 
+  const [birthday, setBirthday] = useState(userData[0].birthday);
+  const handleBirthdayChange = useCallback((newValue) => setBirthday(userData[0].birthday = newValue), []);
+
+  const dateRegEx = '^(19|20)\\\\\\\\d\\\\\\\\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$'
+
   function handleClick() {
     setIsEditing(!isEditing)
     console.log(userData)
@@ -46,18 +51,21 @@ function NewForm() {
         value={firstName}
         onChange={handleFirstNameChange}
         disabled={!isEditing}
+        requiredIndicator={true}
       />
       <TextField
         label="Last name"
         value={lastName}
         onChange={handleLastNameChange}
         disabled={!isEditing}
+        requiredIndicator={true}
       />
       <TextField
         label="Address"
         value={address}
         onChange={handleAddresssChange} 
         disabled={!isEditing}
+        requiredIndicator={true}
       />
       <Select 
         label="Gender"
@@ -65,8 +73,17 @@ function NewForm() {
         value={gender}
         onChange={handleGenderChange}
         disabled={!isEditing}
+        requiredIndicator={true}
       />
-
+      <TextField
+        label="Birthday"
+        value={birthday}
+        onChange={handleBirthdayChange} 
+        disabled={!isEditing}
+        pattern={dateRegEx}
+        requiredIndicator={true}
+        type="date"
+      />
       <Button onClick={handleClick}>Edit</Button>
     </FormLayout>
   );
