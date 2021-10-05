@@ -3,10 +3,10 @@ import { Button, FormLayout } from '@shopify/polaris';
 
 import lunarisData from '../data/lunarisData';
 
-import NameInput from './NameInput';
-import AddressInput from './AddressInput';
-import GenderSelect from './GenderSelect';
-import BirthdayInput from './BirthdayInput';
+import NameInput from './input/NameInput';
+import AddressInput from './input/AddressInput';
+import GenderSelect from './input//GenderSelect';
+import BirthdayInput from './input/BirthdayInput';
 
 function NewForm() {
   const userData = useState(lunarisData[0])
@@ -14,7 +14,7 @@ function NewForm() {
 
   function handleClick() {
     setIsEditing(!isEditing)
-    console.log(userData)
+    console.log(userData[0])
   }
 
   return (
