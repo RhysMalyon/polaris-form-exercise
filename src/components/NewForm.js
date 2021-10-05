@@ -1,28 +1,16 @@
-import React, { useCallback, useState } from 'react';
-import {
-  Button,
-  FormLayout,
-  TextField,
-  Select
-} from '@shopify/polaris';
+import React, { useState } from 'react';
+import { Button, FormLayout } from '@shopify/polaris';
 
 import lunarisData from '../data/lunarisData';
 
 import NameInput from './NameInput';
 import AddressInput from './AddressInput';
 import GenderSelect from './GenderSelect';
+import BirthdayInput from './BirthdayInput';
 
 function NewForm() {
   const userData = useState(lunarisData[0])
-
   const [isEditing, setIsEditing] = useState(false);
-
-  
-
-  const [birthday, setBirthday] = useState(userData[0].birthday);
-  const handleBirthdayChange = useCallback((newValue) => setBirthday(userData[0].birthday = newValue), []);
-
-  const dateRegEx = '^(19|20)\\\\\\\\d\\\\\\\\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$'
 
   function handleClick() {
     setIsEditing(!isEditing)
@@ -43,14 +31,9 @@ function NewForm() {
         userData={userData} 
         isEditing={isEditing}
       />
-      <TextField
-        label="Birthday"
-        value={birthday}
-        onChange={handleBirthdayChange} 
-        disabled={!isEditing}
-        pattern={dateRegEx}
-        requiredIndicator={true}
-        type="date"
+      <BirthdayInput
+        userData={userData} 
+        isEditing={isEditing}
       />
       <Button onClick={handleClick}>Edit</Button>
     </FormLayout>
