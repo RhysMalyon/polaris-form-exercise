@@ -8,7 +8,7 @@ import Form from './components/Form'
 
 function App() {
     return (
-      <Page title="Polaris">
+      <Page>
         <Layout>
           <Layout.Section>
             <Form />

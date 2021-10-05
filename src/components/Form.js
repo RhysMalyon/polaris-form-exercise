@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, FormLayout } from '@shopify/polaris';
 
+import '../styles/index.scss'
+
 import lunarisData from '../data/lunarisData';
 
 import NameInput from './input/NameInput';
@@ -18,27 +20,30 @@ function NewForm() {
   }
 
   return (
-    <FormLayout>
-      <NameInput
-        userData={userData} 
-        isEditing={isEditing}
-      />
-      <AddressInput
-        userData={userData} 
-        isEditing={isEditing}
-      />
-      <GenderSelect 
-        userData={userData} 
-        isEditing={isEditing}
-      />
-      <BirthdayInput
-        userData={userData} 
-        isEditing={isEditing}
-      />
-      <Button onClick={handleClick} primary={true}>
-        {isEditing ? "Save" : "Edit"}
-      </Button>
-    </FormLayout>
+    <div className="container__form">
+      <h1>Lunaris Form Exercise</h1>
+      <FormLayout>
+        <NameInput
+          userData={userData} 
+          isEditing={isEditing}
+        />
+        <AddressInput
+          userData={userData} 
+          isEditing={isEditing}
+        />
+        <GenderSelect 
+          userData={userData} 
+          isEditing={isEditing}
+        />
+        <BirthdayInput
+          userData={userData} 
+          isEditing={isEditing}
+        />
+        <Button onClick={handleClick} primary={true}>
+          {isEditing ? "Save" : "Edit"}
+        </Button>
+      </FormLayout>
+    </div>
   );
 }
 
