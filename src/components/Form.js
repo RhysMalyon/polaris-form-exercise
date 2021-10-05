@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import {
+  Button,
   FormLayout,
   TextField,
   Select,
@@ -13,60 +14,75 @@ class Form extends React.Component {
     super()
     this.state = {
       userInfo: lunarisData,
-      birthday: new Date("2008-02-20")
+      birthday: new Date("2008-02-20"),
+      isEditing: false
     }
+    this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
   
+  handleClick() {
+    const editStatus = this.setState(prevState => {
+      return {
+        isEditing: !prevState.isEditing
+      }
+    })
+    return {
+      isEditing: editStatus
+    }
+  }
+
+  handleChange() {newValue => setValue(newValue), []};
+
   render() {
-  const month = this.state.birthday.getMonth()
-  const year = this.state.birthday.getYear()
+    const date = this.state.birthday.getDate()
+    const month = this.state.birthday.getMonth()
+    const year = this.state.birthday.getFullYear()
 
-  // const handleSelectChange = useCallback((value) => setSelected(value), []);
+    const genderOptions = [
+      {label: 'Male', value: 'Male'},
+      {label: 'Female', value: 'Female'},
+      {label: 'Prefer Not To Say', value: 'Prefer Not To Say'},
+    ]
 
-  const options = [
-    {label: 'Male', value: 'Male'},
-    {label: 'Female', value: 'Female'},
-    {label: 'Prefer Not To Say', value: 'Prefer Not To Say'},
-  ]
+    const editStatus = !this.state.isEditing
 
     return (
       <FormLayout>
-        <TextField 
+        <TextField
           label="First name"
           value={this.state.userInfo[0].first_name}
-          onChange={() => { }}
+          onChange={this.handleChange}
+          disabled={editStatus}
         />
         <TextField
           label="Last name"
           value={this.state.userInfo[0].last_name}
           onChange={() => { } }
+          disabled={editStatus}
         />
         <TextField
           label="Address"
           value={this.state.userInfo[0].address}
-          onChange={() => { } } />
+          onChange={() => { } } 
+          disabled={editStatus}
+        />
         <Select 
           label="Gender"
-          options={options}
+          options={genderOptions}
           onChange={() => {}}
+          disabled={editStatus}
         />
         <DatePicker
+          date={date}
           month={month}
           year={year}
+          disabled={editStatus}
         />
-        <button onClick={() => console.log(this.state.userInfo[0].first_name)}>Click me</button>
+        <Button onClick={this.handleClick}>Edit</Button>
       </FormLayout>
     )
   }
 }
 
-
 export default Form
-
-// this.state = {
-//   firstName: "Lunaris",
-//   lastName: "S.",
-//   address: "Tokyo, Kichijoji Honcho 1",
-//   birthday: new Date("2008-02-20"),
-//   gender: "unknown"
-// }
