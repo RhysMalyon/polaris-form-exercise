@@ -1,26 +1,29 @@
-import React, { useState, useCallback } from 'react'
+// Functions & Variables
 
-function DatePicker() {
-  const [{month, year}, setDate] = useState({month: 1, year: 2018});
-  const [selectedDates, setSelectedDates] = useState({
-    start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-    end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-  });
+const birthday = new Date(userData[0].birthday)
 
-  const handleMonthChange = useCallback(
-    (month, year) => setDate({month, year}),
-    [],
-  );
+const birthMonth = birthday.getMonth()
+const birthYear = birthday.getFullYear()
 
-  return (
-    <DatePicker
-      month={month}
-      year={year}
-      onChange={setSelectedDates}
-      onMonthChange={handleMonthChange}
-      selected={selectedDates}
-    />
-  );
-}
+const [{month, year}, setDate] = useState({month: birthMonth, year: birthYear});
+const [selectedDates, setSelectedDates] = useState({
+  start: new Date(birthday),
+  end: new Date(birthday),
+});
 
-  export default DatePicker
+const handleMonthChange = useCallback(
+  (month, year) => setDate({month, year}),
+  console.log(month,year),
+  [],
+);
+
+// Polaris component & Props
+
+<DatePicker
+month={month}
+year={year}
+disabled={!isEditing}
+onChange={setSelectedDates}
+onMonthChange={handleMonthChange}
+selected={selectedDates}
+/>
