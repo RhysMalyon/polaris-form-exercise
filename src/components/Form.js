@@ -14,7 +14,7 @@ function NewForm() {
 
   function handleClick() {
     setIsEditing(!isEditing)
-    console.log(userData[0])
+    isEditing ? console.log(userData[0]) : null
   }
 
   return (
@@ -35,7 +35,9 @@ function NewForm() {
         userData={userData} 
         isEditing={isEditing}
       />
-      <Button onClick={handleClick}>Edit</Button>
+      <Button onClick={handleClick} primary={true}>
+        {isEditing ? "Save" : "Edit"}
+      </Button>
     </FormLayout>
   );
 }

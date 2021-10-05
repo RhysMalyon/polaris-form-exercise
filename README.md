@@ -1,49 +1,35 @@
-# Exercise: Polaris Form
+# React Form (Polaris Components)
 
-Goal: create a form to update the given user, you must use (Polaris)[https://polaris.shopify.com/] components to build it.
+A simple form built using Shopify's Polaris components. This was my first experience using their component library and took some getting used to but, once I wrapped my head around it, became quite intuitive and easy to customise.
 
-User object in JSON (represents a user given by the api):
+## Process
 
-```json
-{
-  "first_name": "Lunaris",
-  "last_name": "S.",
-  "address": "Tokyo, Kichijoji Honcho 1",
-  "birthday": "2008-02-20",
-  "gender": "unknown"
-}
-```
+I initially built the form as a class-based component but quickly found that this removed a lot of the built-in functionality that Polaris components provided. After struggling to implement the features offered in the supplied useCallback functions, I made the switch to a functional component which simplified the process significantly.
 
-1. Form needs to handle ALL fields
-2. You can simply save the updated fields to an object and `console.log` the object when click the save button
-3. (Optional) Ability to cancel my edits and revert back to the initial data
+### Handling data
 
-## Dependencies
+As the focus of the exercise was not to persist data, I put the supplied data in a dedicated file to be used in state across the components. From there I supplied it to the form component through the useState hook and passed it to child components through props.
 
-- [npm](https://www.npmjs.com/)
+### Editing information
 
-## Getting started
+I knew that I didn't want input fields to always be in an editable state so I created the isEditing state tied to the button component to allow for editing and saving data.
 
-### Installation
+### Birthday - TextField vs DatePicker
 
-Install all the project dependencies.
+In the first iteration of the birthday input, I attempted to use the date picker Polaris component but found it didn't fit well with my requirements. Changing to a text field component with the date input type allowed me to reassign the birthday value in the userData state. I found a regular expression solution online to ensure that the data output by the component on save would match the format provided in the sample data, which was then implemented through the built-in functionality provided by the text field component.
 
-**With npm**
+## Installation
 
-```bash
-npm install
-```
+In the project directory, you can run:
 
-### Development
+### `yarn install` / `npm install`
 
-Run the local `create-react-app` development server with Polaris preconfigured.
+Install all necessary dependencies to be able to run the project.
 
-````
+### `yarn start` / `npm start`
 
-**With npm**
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-```bash
-npm start
-````
-
-Open **http://localhost:3000** in your browser and you should see the Polaris example application.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
