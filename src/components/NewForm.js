@@ -7,16 +7,14 @@ import {
 } from '@shopify/polaris';
 
 import lunarisData from '../data/lunarisData';
+
 import NameInput from './NameInput';
+import AddressInput from './AddressInput';
 
 function NewForm() {
   const userData = useState(lunarisData[0])
 
   const [isEditing, setIsEditing] = useState(false);
-
-  const [address, setAddress] = useState(userData[0].address);
-  const handleAddresssChange = useCallback((newValue) => setAddress(userData[0].address = newValue), []);
-
 
   const [gender, setGender] = useState(userData[0].gender);
   const handleGenderChange = useCallback((newValue) => setGender(userData[0].gender = newValue), []);
@@ -44,12 +42,9 @@ function NewForm() {
         userData={userData} 
         isEditing={isEditing}
       />
-      <TextField
-        label="Address"
-        value={address}
-        onChange={handleAddresssChange} 
-        disabled={!isEditing}
-        requiredIndicator={true}
+      <AddressInput
+        userData={userData} 
+        isEditing={isEditing}
       />
       <Select 
         label="Gender"
